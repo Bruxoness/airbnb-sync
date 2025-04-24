@@ -1,0 +1,15 @@
+name: Sync Airbnb Calendar
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Executa a cada hora
+  workflow_dispatch:     # Permite execução manual
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Chamar função Edge do Supabase
+        run: |
+          curl -X POST https://asltooforehszamavdiw.supabase.co/functions/v1/sync-calendar \
+          -H "Authorization: Bearer a1ccda7d-dff7-4230-b90a-8c69cd7b6f36"
